@@ -32,3 +32,14 @@ Route::get('msmhs', function () {
 
     return  new App\Responses\Msmhs($data);
 });
+
+Route::get('rtrnlm/{periode}', function () {
+    $data = [];
+    if (request('periode')) {
+        $data = DB::table('rtrnlm')
+            ->where('THSMSTRNLM', request('periode'))
+            ->get();
+    }
+
+    return  new App\Responses\Rtrnlm($data);
+});
