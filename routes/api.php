@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('tbkmk', function () {
     $data = DB::table('tbkmk')
-        ->whereIn('THSMSTBKMK', ['20161', '20162'])
+        ->whereIn('THSMSTBKMK', ['20152', '20161', '20162'])
         ->get();
 
     return  new App\Responses\Tbkmk($data);
@@ -27,7 +27,8 @@ Route::get('tbkmk', function () {
 
 Route::get('msmhs', function () {
     $data = DB::table('msmhs')
-        ->whereIn('SMAWLMSMHS', ['20161'])
+        ->whereIn('SMAWLMSMHS', ['20152', '20161'])
+        ->orderBy('NIMHSMSMHS')
         ->get();
 
     return  new App\Responses\Msmhs($data);
